@@ -4,10 +4,7 @@ donenv.config();
 
 export const verifyToken = (req, res, next) => {
   // 1. Get the token from the Authorization header
-  const authHeader = req.headers["authorization"];
-
-  // The header format is usually: "Bearer <TOKEN>"
-  const token = authHeader && authHeader.split(" ")[1];
+  const token = req.cookies?.token;
 
   // 2. Check if the token exists
   if (!token) {
@@ -34,7 +31,8 @@ export const verifyToken = (req, res, next) => {
 export const authorizeRoles = (...allowedRoles) => {
   return (req, res, next) => {
     // Ensure verifyToken ran first and populated req.user
-    
+
+
     if (!req.user || !req.user.role) {
       return res.status(401).json({ message: "Unauthorized." });
     }
