@@ -6,7 +6,9 @@ import dbCreate from "./config/db.js";
 import radis from "./config/radis.js";
 import authRoutes from "./routes/auth.routes.js";
 import doctorRoutes from "./routes/doctor.routes.js";
+import receptionistRoutes from "./routes/receptionistRoutes.js";
 import cookieParser from "cookie-parser";
+
 dotenv.config();
 
 const app = express();
@@ -27,7 +29,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/auth", authRoutes);
 app.use("/api/doctors", doctorRoutes);
-// router.use('/receptionists', receptionistRoutes);
+app.use("/api/receptionists", receptionistRoutes);
 // router.use('/analytics', analyticsRoutes);
 // router.use('/subscriptions', subscriptionRoutes);
 // router.use('/system', systemRoutes);
