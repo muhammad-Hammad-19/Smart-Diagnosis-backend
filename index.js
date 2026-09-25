@@ -7,6 +7,8 @@ import radis from "./config/radis.js";
 import authRoutes from "./routes/auth.routes.js";
 import doctorRoutes from "./routes/doctor.routes.js";
 import receptionistRoutes from "./routes/receptionistRoutes.js";
+import analyticsRoutes from "./routes/analyticsRoutes.js";
+import subscriptionRoutes from "./routes/subscriptionRoutes.js";
 import cookieParser from "cookie-parser";
 
 dotenv.config();
@@ -30,9 +32,10 @@ app.get("/", (req, res) => {
 app.use("/api/auth", authRoutes);
 app.use("/api/doctors", doctorRoutes);
 app.use("/api/receptionists", receptionistRoutes);
-// router.use('/analytics', analyticsRoutes);
-// router.use('/subscriptions', subscriptionRoutes);
+app.use("/api/analytics", analyticsRoutes);
+app.use("/api/subscriptions", subscriptionRoutes);
 // router.use('/system', systemRoutes);
+
 app.post("/post/:id/view", async (req, res) => {
   const id = req.params.id;
   const radisView = await radis.incr(`post${id}view`);

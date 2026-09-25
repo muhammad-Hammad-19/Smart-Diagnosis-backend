@@ -10,7 +10,7 @@ const JWT_SECRET = process.env.JWT_SECRET;
 const JWT_EXPIRES_IN = process.env.JWT_EXPIRES_IN || "1d";
 
 export const registerUser = async ({ name, email, password, role }) => {
-  const existingUser = await User.findOne({ email });
+  const existingUser = await User.findOne({ email })
   if (existingUser) {
     const error = new Error("Email already registered");
     error.statusCode = 409;
