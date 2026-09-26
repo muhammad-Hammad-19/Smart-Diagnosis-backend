@@ -9,6 +9,8 @@ import doctorRoutes from "./routes/doctor.routes.js";
 import receptionistRoutes from "./routes/receptionistRoutes.js";
 import analyticsRoutes from "./routes/analyticsRoutes.js";
 import subscriptionRoutes from "./routes/subscriptionRoutes.js";
+import subscriptionAssigmentRoutes from "./routes/subciptionAssigmentRoutes.js";
+import systemRoutes from "./routes/systemRoutes.js";
 import cookieParser from "cookie-parser";
 
 dotenv.config();
@@ -34,7 +36,8 @@ app.use("/api/doctors", doctorRoutes);
 app.use("/api/receptionists", receptionistRoutes);
 app.use("/api/analytics", analyticsRoutes);
 app.use("/api/subscriptions", subscriptionRoutes);
-// router.use('/system', systemRoutes);
+app.use("/api/subciptionAssigment", subscriptionAssigmentRoutes);
+app.use("/system", systemRoutes);
 
 app.post("/post/:id/view", async (req, res) => {
   const id = req.params.id;
